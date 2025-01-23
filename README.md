@@ -52,11 +52,13 @@ wget -O $HOME/.junction/config/genesis.json https://server-4.itrocket.net/testne
 wget -O $HOME/.junction/config/addrbook.json  https://server-4.itrocket.net/testnet/airchains/addrbook.json
 ```
 
-# set seeds and peers
+**set seeds and peers**
+```
 SEEDS="04e2fdd6ec8f23729f24245171eaceae5219aa91@airchains-testnet-seed.itrocket.net:19656"
 PEERS="e929f77cfe4cd7d51433f438d3b764937e799313@airchains-testnet-peer.itrocket.net:19656,5880ddf4518b061c111ae6bf07b1ef76ef2a42af@158.220.100.154:26656,2cac83c991358faf89f0c1bb40d94563609e00d9@65.109.84.33:26756,976a0fe0a0fa205478beb66addaae3842907c3f6@37.27.48.77:32656,e00222e8db843c99acafe0a6dc0aebd3a95e813f@65.108.233.73:19656,d5ded9ed366f251a59c85f84ed1fa825cceb0d97@[2a01:4f8:221:158e::2]:13656,b419d23f56a6a5403319399ed38b6b93138210a1@95.217.200.98:31656,a9ee14aac08cd57715086fd6759371cc434b4bcd@[2a01:4f8:171:325::2]:26656,aaf57c42eb1a53b487443088db025a5d05f78159@[2a01:4f9:3051:19c2::2]:13756,3250f8c73d5ded86fa5d0a7b78e84715b9c03643@88.198.46.55:19656,5717aadf2f21e223012a1ab27e21307f510037c3@[2a01:4f8:262:121c::2]:13756"
 sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*seeds *=.*/seeds = \"$SEEDS\"/}" \
        -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" $HOME/.junction/config/config.toml
+```
 
 # set custom ports in app.toml
 sed -i.bak -e "s%:1317%:${AIRCHAIN_PORT}317%g;
