@@ -94,7 +94,8 @@ sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.junction/config/confi
 sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.junction/config/config.toml
 ```
 
-# create service file
+**create service file**
+```
 sudo tee /etc/systemd/system/junctiond.service > /dev/null <<EOF
 [Unit]
 Description=Airchains node
@@ -109,7 +110,7 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
-
+```
 # reset and download snapshot
 junctiond tendermint unsafe-reset-all --home $HOME/.junction
 if curl -s --head curl https://server-4.itrocket.net/testnet/airchains/airchains_2025-01-14_3664941_snap.tar.lz4 | head -n 1 | grep "200" > /dev/null; then
